@@ -1,0 +1,33 @@
+
+<section>
+  <article class="row">
+    <div class="col-md-6">
+      <h1>welcome</h1>
+      <h2>the happy things</h2>
+    </div>
+    <div class="col-md-6">
+      <h3>you liek this?</h3>
+      <div id="happy_things"></div>
+
+      <h3> and this?</h3>
+      <div id="kittens"></div>
+    </div>
+  </article>
+</section>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      $.getJSON('/api', function(data){
+
+        for(var item in data){
+          $('#happy_things').append('<li>'+data[item]+'</li>');
+        }
+
+      })
+      $.getJSON('/api-kittens', function(data){
+        for(var item in data){
+          $('#kittens').append('<li>'+data[item]+'</li>');
+        }
+      })
+  })
+</script>
